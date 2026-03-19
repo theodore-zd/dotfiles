@@ -5,33 +5,12 @@ set -euo pipefail
 echo "Updating system first..."
 sudo pacman -Syu --noconfirm
 
-echo "Installing core dependencies..."
-sudo pacman -S --needed \
-    git base-devel wget curl \
-    xdg-desktop-portal-hyprland xdg-desktop-portal \
-    polkit polkit-gnome \
-    pipewire pipewire-pulse wireplumber pipewire-alsa pipewire-jack \
-    alsa-utils pavucontrol \
-    networkmanager blueman bluez bluez-utils \
-    brightnessctl
-
-echo "Installing Hyprland + essential companions..."
-sudo pacman -S --needed \
-    hyprland hyprpaper hyprlock hypridle \
-    waybar wofi kitty \
-    dunst cliphist \
-    grim slurp swappy \
-    thunar thunar-archive-plugin ffmpegthumbnailer tumbler
-
-echo "Installing fonts..."
-sudo pacman -S --needed \
-    ttf-jetbrains-mono-nerd noto-fonts noto-fonts-emoji \
-    ttf-font-awesome otf-font-awesome
 
 echo "Installing general programs..."
 sudo pacman -S --needed \
     firefox code \
-    neovim fastfetch btop
+    neovim fastfetch btop \
+    discord localsend |
 
 # ──────────────────────────────────────────────────────────────────────────────
 # DEV DEPENDENCIES
@@ -40,6 +19,9 @@ sudo pacman -S --needed \
 echo "Installing dev dependencies..."
 
 sudo pacman -S --needed \
+    ripgrep \
+    dust \
+    zoxide \
     go \
     bun \
     nodejs npm \
@@ -59,15 +41,17 @@ if ! command -v paru &> /dev/null; then
     rm -rf /tmp/paru
 fi
 
+curl -fsSL https://opencode.ai/install | bash
+
 # ──────────────────────────────────────────────────────────────────────────────
 # AUR PACKAGES
 # ──────────────────────────────────────────────────────────────────────────────
 
 echo "Installing AUR packages..."
-
 paru -S --needed --noconfirm \
-    opencode-bin \
-    claude-code
+    claude-code,
+    1password
+
 
 # ──────────────────────────────────────────────────────────────────────────────
 # FLATPAK SETUP
@@ -96,9 +80,3 @@ sudo systemctl enable --now bluetooth
 sudo systemctl enable --now docker
 
 sudo usermod -aG docker "$USER"
-
-echo "Done!"
-echo "IMPORTANT:"
-echo "- Log out and back in (docker group, environment updates)"
-echo "- Run: flatpak update"
-echo "- Configure API keys for claude-code/opencode if needed"

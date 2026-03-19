@@ -7,18 +7,14 @@
 {
   "layer": "top",
   "position": "top",
-  "margin-top": 12,
-  "margin-bottom": -8,
-  "width": 2010,
+  // "margin-top": 12,
+  // "margin-bottom": -8,
+  "width": "100%",
   "height": 34,
 
   // ── Modules Layout ───────────────────────────────────────────────
   "modules-left": [
     "clock",
-    "custom/power",
-    "network",
-    "bluetooth",
-    "custom/microphone",
     "custom/vpn"
   ],
 
@@ -31,9 +27,8 @@
   ],
 
   "modules-right": [
-    "custom/battery",
     "custom/volume",
-    "custom/brightness"
+    "bluetooth"
   ],
 
   // ── Clock ────────────────────────────────────────────────────────
@@ -77,71 +72,6 @@
     "interval": 5
   },
 
-
-  // ── Asus Profile ─────────────────────────────────────────────────
-  "custom/asus-profile": {
-    "exec": "~/.config/waybar/scripts/asus-profile.sh",
-    "interval": 3,
-    "format": "{}",
-    "tooltip": true,
-    "tooltip-format": "Toggle ASUS profile",
-    "on-click": "/home/pewds/.config/cycle-profile.sh"
-  },
-
-
-  // ── Battery (scripted + built-in) ────────────────────────────────
-  "custom/battery": {
-    "exec": "~/.config/waybar/scripts/battery.sh",
-    "return-type": "json",
-    "interval": 10,
-    "on-click": "xfce4-power-manager-settings"
-  },
-
-
-  "battery": {
-    "format": "{icon}  {capacity}%",
-    "format-icons": {
-      "charging": [
-        "󰢜","󰂆","󰂇","󰂈","󰢝","󰂉","󰢞","󰂊","󰂋","󰂅"
-      ],
-      "default": [
-        "󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"
-      ]
-    },
-    "format-full": "Charged ",
-    "interval": 5,
-    "states": {
-      "warning": 20,
-      "critical": 10
-    },
-    "tooltip": true
-  },
-
-  // ── Microphone ───────────────────────────────────────────────────
-  "custom/microphone": {
-    "exec": "~/.config/waybar/scripts/mic.sh",
-    "interval": 1,
-    "tooltip": true,
-    "tooltip-format": "Mic Toggle",
-    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-  },
-
-  // ── Brightness ───────────────────────────────────────────────────
-  "custom/brightness": {
-    "exec": "~/.config/waybar/scripts/brightness.sh",
-    "return-type": "json",
-    "interval": 2,
-    "on-click": "~/.config/waybar/scripts/brightness-toggle.sh",
-    "on-scroll-up": "brightnessctl set +5%",
-    "on-scroll-down": "brightnessctl set 5%-"
-  },
-
-  "backlight": {
-    "format": "󰛨  {percent}%",
-    "format-icons": ["󰃞","󰃟","󰃠","󰃝","󰃜","󰃛"],
-    "class": "flicker-bar",
-    "on-click": "~/.config/waybar/scripts/brightness-slider.sh"
-  },
 
   // ── Workspaces (custom scripts) ──────────────────────────────────
   "custom/workspace-1": {
@@ -189,14 +119,6 @@
     "markup": "pango",
     "tooltip": true,
     "tooltip-format": "VPN Status / Toggle"
-  },
-
-  // ── Power ────────────────────────────────────────────────────────
-  "custom/power": {
-    "format": "[ 󰤆 ]",
-    "tooltip": true,
-    "tooltip-format": "Power Menu",
-    "on-click": "~/.config/waybar/scripts/powermenu.sh"
   },
 
   // ── Spacer ───────────────────────────────────────────────────────
