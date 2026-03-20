@@ -1,0 +1,72 @@
+font-family = CodeNewRoman Nerd Font
+font-size = 15
+shell = zsh
+
+theme = high-contrast
+
+# Color scheme matching waybar theme
+background = #1A1F1C
+foreground = #E8E8E8
+selection-foreground = #E8E8E8
+selection-background = #4CAF50
+cursor-color = #4CAF50
+cursor-text = #1A1F1C
+
+# Ansi colors
+color-0 = #1A1F1C
+color-1 = #D9534F
+color-2 = #4CAF50
+color-3 = #FFA726
+color-4 = #7699A3
+color-5 = #8D7AAE
+color-6 = #78997A
+color-7 = #E8E8E8
+
+# Bright colors
+color-8 = #262C29
+color-9 = #D9534F
+color-10 = #66BB6A
+color-11 = #FFA726
+color-12 = #7699A3
+color-13 = #8D7AAE
+color-14 = #78997A
+color-15 = #FFFFFF
+
+# Window configuration
+window-decoration = false
+window-padding-x = 8
+window-padding-y = 8
+
+# Scroll configuration
+scrollback-limit = 10000
+
+# Key bindings
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+t=new_tab
+keybind = ctrl+shift+w=close_tab
+keybind = ctrl+shift+tab=previous_tab
+keybind = ctrl+tab=next_tab
+keybind = ctrl+page_down=next_tab
+keybind = ctrl+page_up=previous_tab
+keybind = ctrl+1=goto_tab_1
+keybind = ctrl+2=goto_tab_2
+keybind = ctrl+3=goto_tab_3
+keybind = ctrl+4=goto_tab_4
+keybind = ctrl+5=goto_tab_5
+keybind = ctrl+6=goto_tab_6
+keybind = ctrl+7=goto_tab_7
+keybind = ctrl+8=goto_tab_8
+keybind = ctrl+9=goto_tab_9
+keybind = ctrl+0=goto_tab_10
+
+# Tab bar
+tab-bar-edge = bottom
+tab-bar-style = separator
+tab-bar-title-template = "{title}"
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Copy on select
+copy-on-select = false

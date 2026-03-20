@@ -33,7 +33,8 @@
         "orientation": "horizontal",
         "modules":[
             // "custom/openbracket",
-            "custom/arch"
+            "custom/arch",
+            "custom/wallpaper"
             // "custom/split",
             // "custom/powerprofile",
             // "custom/themeswitcher",
@@ -43,6 +44,11 @@
     "custom/arch": {
         "format": "󰣇",
         "tooltip": false,
+    },
+    "custom/wallpaper": {
+        "format": "󰸉",
+        "tooltip": "Change wallpaper",
+        "on-click": "~/.config/waybar/scripts/change_wallpaper.sh",
     },
 
     "group/workspaces":{
@@ -138,13 +144,13 @@
         "format": "CPU:{usage}%",
         "tooltip": false,
         "interval": 2,
-        "on-click": "kitty -e btop",
+        "on-click": "ghostty -e btop",
     },
     "memory":{
         "format": "RAM:{}%",
         "tooltip": false,
         "interval": 2,
-        "on-click": "kitty -e btop",
+        "on-click": "ghostty -e btop",
     },
 
     "group/brightvol": {
@@ -191,7 +197,7 @@
         "format": "{}",
         "exec": "~/.config/waybar/scripts/bluetooth_status.sh",
         "interval": 5,
-        "on-click": "kitty -e bluetui"
+        "on-click": "ghostty -e bluetui"
     },
     "group/clock": {
         "orientation": "horizontal",

@@ -1,19 +1,19 @@
 /* colors defined at top for easy configuring */
-@define-color background #2C2A24;
-@define-color second-background #3A372F;
-@define-color text #DDD5C4;
-@define-color borders #A0907A;
-@define-color focused #D08B57;
-@define-color focused2 #BFAA80;
+@define-color background #1A1F1C;
+@define-color second-background #262C29;
+@define-color text #E8E8E8;
+@define-color borders #455049;
+@define-color focused #4CAF50;
+@define-color focused2 #66BB6A;
 @define-color color1 #7699A3;
 @define-color color2 #8D7AAE;
 @define-color color3 #78997A;
-@define-color urgent #B05A5A;
+@define-color urgent #D9534F;
 
 
 /* font declared */
 * {
-  font-family: "Iosevka Nerd Font";
+  font-family: "CodeNewRoman Nerd Font";
   font-size: 15px;
 }
 
@@ -83,15 +83,19 @@ button {
 }
 
 #custom-arch:hover {
-  color: @color1;
+  color: @focused;
 }
 
 #custom-powerprofile:hover {
-  color: @color1
+  color: @focused
 }
 
 #custom-themeswitcher:hover {
-  color: @color1;
+  color: @focused;
+}
+
+#custom-wallpaper:hover {
+  color: @focused;
 }
 
 /* workspace pannel */
@@ -134,7 +138,7 @@ button {
 }
 
 #mpris.playing {
-  background-color: @color3;
+  background-color: @focused;
   border-radius: 2px;
   color: @background;
 }
@@ -163,7 +167,7 @@ button {
 #custom-bluetooth:hover,
 #network:hover,
 #wireplumber:hover {
-  color: @color1;
+  color: @focused;
 }
 
 

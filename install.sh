@@ -10,7 +10,8 @@ echo "Installing general programs..."
 sudo pacman -S --needed \
     firefox visual-studio-code-bin  \
     neovim fastfetch btop \
-    discord localsend |
+    discord localsend \
+    otf-codenewroman-nerd |
 
 # ──────────────────────────────────────────────────────────────────────────────
 # DEV DEPENDENCIES
@@ -26,7 +27,10 @@ sudo pacman -S --needed \
     bun \
     nodejs npm \
     python python-pip python-poetry \
-    docker docker-compose
+    docker docker-compose \
+    ghostty \
+    ghostty-shell-integration \
+    zenity
 
 # ──────────────────────────────────────────────────────────────────────────────
 # INSTALL PARU (AUR HELPER)
@@ -60,10 +64,22 @@ curl -fsSL https://vicinae.com/install.sh | bash
 echo "Installing AUR packages..."
 paru -S --needed --noconfirm \
     claude-code \
-    1password |
+    1password \
+    zsh-autosuggestions \
+    zsh-syntax-highlighting |
 
 if ! command -v opencode &> /dev/null; then
     curl -fsSL https://opencode.ai/install | bash
+fi
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# OH MY ZSH SETUP
+# ──────────────────────────────────────────────────────────────────────────────
+
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Installing Oh My Zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
 
