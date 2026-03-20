@@ -8,7 +8,7 @@ sudo pacman -Syu --noconfirm
 
 echo "Installing general programs..."
 sudo pacman -S --needed \
-    firefox code \
+    firefox visual-studio-code-bin  \
     neovim fastfetch btop \
     discord localsend |
 
@@ -31,7 +31,6 @@ sudo pacman -S --needed \
 # ──────────────────────────────────────────────────────────────────────────────
 # INSTALL PARU (AUR HELPER)
 # ──────────────────────────────────────────────────────────────────────────────
-
 if ! command -v paru &> /dev/null; then
     echo "Installing paru AUR helper..."
     git clone https://aur.archlinux.org/paru.git /tmp/paru
@@ -41,7 +40,18 @@ if ! command -v paru &> /dev/null; then
     rm -rf /tmp/paru
 fi
 
-curl -fsSL https://opencode.ai/install | bash
+# ──────────────────────────────────────────────────────────────────────────────
+# Install UI packages
+# ──────────────────────────────────────────────────────────────────────────────
+paru -S --needed --noconfirm \
+	hyprlock \
+    brightnessctl \
+    bluetui \
+    playerctl \
+	waybar |
+
+curl -fsSL https://vicinae.com/install.sh | bash
+
 
 # ──────────────────────────────────────────────────────────────────────────────
 # AUR PACKAGES
@@ -49,8 +59,12 @@ curl -fsSL https://opencode.ai/install | bash
 
 echo "Installing AUR packages..."
 paru -S --needed --noconfirm \
-    claude-code,
-    1password
+    claude-code \
+    1password |
+
+if ! command -v opencode &> /dev/null; then
+    curl -fsSL https://opencode.ai/install | bash
+fi
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -75,8 +89,12 @@ flatpak install -y flathub it.mijorus.gearlever
 
 echo "Setting up services..."
 
-sudo systemctl enable --now NetworkManager
-sudo systemctl enable --now bluetooth
-sudo systemctl enable --now docker
+systemctl --user enable --now NetworkManager.service
+systemctl --user enable --now bluetooth.service
+systemctl --user enable --now docker.service
+systemctl --user enable --now docker.service
+systemctl --user enable --now vicinae.service
+systemctl --user enable --now hyprpolkitagent.service
+
 
 sudo usermod -aG docker "$USER"

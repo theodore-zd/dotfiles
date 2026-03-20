@@ -1,130 +1,220 @@
-// ──────────────────────────────────────────────────────────────────────────
-//  °˖* ૮(  • ᴗ ｡)っ🍸  pewdiepie/archdaemon/dionysh shhheersh
-//  Waybar config
-//  vers. 1.0.0
-// ──────────────────────────────────────────────────────────────────────────
+[{
+    "height": 40,
+    "spacing": 5, 
 
-{
-  "layer": "top",
-  "position": "top",
-  // "margin-top": 12,
-  // "margin-bottom": -8,
-  "width": "100%",
-  "height": 34,
+    "modules-left": [
+        "group/Utilities",
+        "group/workspaces",
+        "mpris"
+    ],
+    "modules-center": [
+        "group/windows"
+    ],
+    "modules-right": [
+        "group/cpuram",
+        "group/system"
+    ],
 
-  // ── Modules Layout ───────────────────────────────────────────────
-  "modules-left": [
-    "clock",
-    "custom/vpn"
-  ],
 
-  "modules-center": [
-    "custom/workspace-1",
-    "custom/workspace-2",
-    "custom/asus-profile",
-    "custom/workspace-3",
-    "custom/workspace-4"
-  ],
-
-  "modules-right": [
-    "custom/volume",
-    "bluetooth"
-  ],
-
-  // ── Clock ────────────────────────────────────────────────────────
-  "clock": {
-    "tooltip-format": "{calendar}",
-    "format-alt": "  {:%a, %d %b %Y}",
-    "format": "[   {:%I:%M %p} ]"
-  },
-
-  // ── Network ──────────────────────────────────────────────────────
-  "network": {
-    "format-wifi": "{icon}",
-    "format-icons": ["[ 󰤯 ]", "[ 󰤟 ]", "[ 󰤢 ]", "[ 󰤥 ]", "[ 󰤨 ]"],
-    "format-ethernet": "󰀂",
-    "format-alt": "󱛇",
-    "format-disconnected": "󰖪",
-    "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-    "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-    "tooltip-format-disconnected": "Disconnected",
-    "on-click": "nm-connection-editor",
-    "interval": 5,
-    "nospacing": 1
-  },
-
-  // ── Keyboard ─────────────────────────────────────────────────────
-  "keyboard-state": {
-    "numlock": true,
-    "capslock": true,
-    "format": " {layout}"
-  },
-
-  // ── Bluetooth ────────────────────────────────────────────────────
-  "bluetooth": {
-    "format": "{icon}",
-    "format-icons": {
-      "enabled": "[  ]",
-      "disabled": "[ 󰂲 ]"
+    "custom/openbracket": {
+        "format": "[",
+        "tooltip": false
     },
-    "on-click": "~/.config/waybar/scripts/bluetooth-toggle.sh",
-    "tooltip-format": "Bluetooth is {status}",
-    "interval": 5
-  },
+    "custom/closebracket": {
+        "format": "]",
+        "tooltip": false
+    },    
+    "custom/split": {
+      "format": "|",
+      "tooltip": false
+    },
+
+    "group/Utilities":{
+        "orientation": "horizontal",
+        "modules":[
+            // "custom/openbracket",
+            "custom/arch"
+            // "custom/split",
+            // "custom/powerprofile",
+            // "custom/themeswitcher",
+            // "custom/closebracket"
+        ]
+    },
+    "custom/arch": {
+        "format": "󰣇",
+        "tooltip": false,
+    },
+
+    "group/workspaces":{
+        "orientation": "horizontal",
+        "modules":[
+            "custom/openbracket",
+            "hyprland/workspaces",
+            "custom/closebracket"
+        ]
+    },
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "enable-bar-scroll": true,
+        "disable-scroll-wraparound": true,
+        "active-only": false,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "default": "•"
+        }
+    },
+
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "default": "•"
+        }
+    },
+
+    "mpris": {
+        "format": "[   {status_icon} | {dynamic} ]",
+        "interval": 1,
+        "dynamic-len": 40,
+        "status-icons": {
+            "playing": "▶",
+            "paused": "⏸",
+            "stopped": ""
+        },
+        "dynamic-order": ["artist"]
+    },
 
 
-  // ── Workspaces (custom scripts) ──────────────────────────────────
-  "custom/workspace-1": {
-    "exec": "~/.config/waybar/scripts/workspaces/workspace-1.sh",
-    "interval": 1,
-    "on-click": "hyprctl dispatch workspace 1",
-    "tooltip": "Switch to workspace 1"
-  },
-  "custom/workspace-2": {
-    "exec": "~/.config/waybar/scripts/workspaces/workspace-2.sh",
-    "interval": 1,
-    "on-click": "hyprctl dispatch workspace 2",
-    "tooltip": "Switch to workspace 2"
-  },
-  "custom/workspace-3": {
-    "exec": "~/.config/waybar/scripts/workspaces/workspace-3.sh",
-    "interval": 1,
-    "on-click": "hyprctl dispatch workspace 3",
-    "tooltip": "Switch to workspace 3"
-  },
-  "custom/workspace-4": {
-    "exec": "~/.config/waybar/scripts/workspaces/workspace-4.sh",
-    "interval": 1,
-    "on-click": "hyprctl dispatch workspace 4",
-    "tooltip": "Switch to workspace 4"
-  },
-
-  // ── Volume ───────────────────────────────────────────────────────
-  "custom/volume": {
-    "exec": "~/.config/waybar/scripts/volume.sh",
-    "return-type": "json",
-    "interval": 1,
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-  },
+    "group/windows": {
+        "orientation":"horizontal",
+        "modules":[
+            "clock",
+            "custom/openbracket",
+            "hyprland/window",
+            "custom/closebracket"
+        ]
+    },
+    "hyprland/window": {
+        "format": "{title}", 
+        "max-length": 14,
+        "min-length": 0,
+        "all-outputs": true
+    },
+    "niri/window": {
+        "format": "{title}", 
+        "max-length": 20,
+        "min-length": 0,
+        "all-outputs": true
+    },
 
 
-  // ── VPN ──────────────────────────────────────────────────────────
-  "custom/vpn": {
-    "exec": "~/.config/waybar/scripts/nordvpn-status.sh",
-    "interval": 5,
-    "on-click": "~/.config/waybar/scripts/nordvpn-toggle.sh",
-    "format": "{}",
-    "markup": "pango",
-    "tooltip": true,
-    "tooltip-format": "VPN Status / Toggle"
-  },
+    "group/cpuram": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/openbracket",
+            "cpu",
+            "custom/split",
+            "memory",
+            "custom/closebracket"
+        ]
+    },
+    "cpu": {
+        "format": "CPU:{usage}%",
+        "tooltip": false,
+        "interval": 2,
+        "on-click": "kitty -e btop",
+    },
+    "memory":{
+        "format": "RAM:{}%",
+        "tooltip": false,
+        "interval": 2,
+        "on-click": "kitty -e btop",
+    },
 
-  // ── Spacer ───────────────────────────────────────────────────────
-  "custom/squares": {
-    "format": " ",
-    "tooltip": false
-  }
-}
-
+    "group/brightvol": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/openbracket",
+            "custom/split",
+            "wireplumber",
+            "custom/closebracket"
+        ]
+    },
+    "wireplumber": {
+        "scroll-step": 5,
+        "format": "{icon}{volume}%",
+        "format-bluetooth": "{icon}{volume}% ",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [" :", " :", " :"]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    },
+    "group/system": {
+        "orientation": "horizontal",
+        "modules": [
+            // "custom/openbracket",
+            "custom/split",
+            // "network",
+            "custom/bluetooth"
+            // "custom/clipboard",
+            // "battery",
+            // "custom/swaync",
+            // "custom/closebracket"
+        ]
+    },
+    "custom/bluetooth": {
+        "format": "{}",
+        "exec": "~/.config/waybar/scripts/bluetooth_status.sh",
+        "interval": 5,
+        "on-click": "kitty -e bluetui"
+    },
+    "group/clock": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/openbracket",
+            "clock",
+            "custom/closebracket"
+        ]
+    },
+    "custom/cava": {
+        "exec": "~/.config/waybar/scripts/cava_wrapper.sh",
+        "format": "♪ {}",
+        "restart-interval": 1,
+        "max-length": 50,
+        "on-click": "pkill cava"
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 10
+    },
+    "custom/notifications": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "~/.config/waybar/scripts/notification_center.sh"
+    }
+}]
